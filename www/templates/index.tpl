@@ -4,6 +4,6 @@
         <title>eCMS</title>
     </head>
     <body>
-        blabla
+
     </body>
 </html>
