@@ -37,8 +37,22 @@ function autoload_classes($className) {
 /** Register class autoload with Smarty autoload */
 spl_autoload_register('autoload_classes');
 
-$EveAPI = new \eCMS\EveAPI\EveAPI('1490636', 'AVkLU7aKz4LvKYbBRynNGJesTmhUXBt9i8vGuF59sdCGdIuSDZIQMGNnrf2lP4Y7');
+/** Load defined modules */
+if(isset($_GET['module'])) {
+    $modulePath = 'inc/module/';
+    $moduleName = 'module.' . $_GET['module'] . '.inc.php';
+    if(!file_exists($modulePath . $moduleName))
+        printf('Module "' . $_GET['module'] . '" does not exist');
+    else
+        require $modulePath . $moduleName;
+}
 
-echo '<pre>';
-$charSheet = \eCMS\EveAPI\Character::getCharacterSheet($EveAPI, $data = array('characterID' => 1238718255));
-var_dump($charSheet->result);
+if(isset($_GET['submodule'])) {
+    $submodulePath = './include/module/' . $_GET['module'] . '/';
+    $submoduleName = 'submodule.' . $_GET['submodule'] . '.inc.php';
+    if(!file_exists($submodulePath . $submoduleName))
+        printf('Submodule "' . $_GET['submodule'] . '" does not exist');
+    else
+        include($submodulePath . $submoduleName);
+}
+
