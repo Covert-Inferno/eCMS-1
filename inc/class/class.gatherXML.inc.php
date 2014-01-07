@@ -27,4 +27,4 @@ class gatherXML {
         return $content;
     }
 
-} 
+}

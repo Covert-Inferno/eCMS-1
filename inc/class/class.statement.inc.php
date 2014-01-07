@@ -21,4 +21,4 @@ abstract class statement {
 
     public abstract function getNumRows();
 
-} 
+}

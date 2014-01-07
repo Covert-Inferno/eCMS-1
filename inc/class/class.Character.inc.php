@@ -29,4 +29,4 @@ class Character {
         else
             return $EveAPI->fetchData('/char/CharacterSheet.xml.aspx', $data['characterId'] = $charID);
     }
-} 
+}

@@ -51,4 +51,4 @@ class miscellaneous {
             return crypt($input, "$2a$" . $strength . "$" . $salt) . $salt;
         }
     }
-} 
+}

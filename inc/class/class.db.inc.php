@@ -50,4 +50,4 @@ class db {
     }
 
     public function __destruct() {}
-} 
+}
