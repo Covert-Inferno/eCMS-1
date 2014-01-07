@@ -28,7 +28,7 @@ function autoload_classes($className) {
     $className = explode('\\', $className);
     $classFileName = 'class.' . end($className) . '.inc.php';
     if(!file_exists($classPath . $classFileName)) {
-        printf('Class "' . $className . '" does not exist');
+        printf('Class "' . end($className) . '" does not exist');
     } else {
         require $classPath . $classFileName;
     }
@@ -40,4 +40,5 @@ spl_autoload_register('autoload_classes');
 $EveAPI = new \eCMS\EveAPI\EveAPI('1490636', 'AVkLU7aKz4LvKYbBRynNGJesTmhUXBt9i8vGuF59sdCGdIuSDZIQMGNnrf2lP4Y7');
 
 echo '<pre>';
-var_dump($EveAPI->getCallList());
+$charSheet = \eCMS\EveAPI\Character::getCharacterSheet($EveAPI, $data = array('characterID' => 1238718255));
+var_dump($charSheet->result);

@@ -37,8 +37,8 @@ class EveAPI {
 
     public function fetchData($uri, $data = NULL) {
         if($data == NULL) {
-            $this->prepareDataArray();
-            $xml = gatherXML::getXML($this->getApiLink() . $uri);
+            $dataArray = $this->prepareDataArray();
+            $xml = gatherXML::getXML($this->getApiLink() . $uri, $dataArray);
         } else {
             $dataArray = $this->prepareDataArray($data);
             $xml = gatherXML::getXML($this->getApiLink() . $uri, $dataArray);
