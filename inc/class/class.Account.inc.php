@@ -9,6 +9,9 @@
 namespace eCMS\Account;
 
 
+use eCMS\database\mysql_db;
+use eCMS\Misc\miscellaneous;
+
 class Account {
 
     private $accountID;
@@ -31,7 +34,27 @@ class Account {
         if(empty($loginName))
             $this->setAccountError('noLoginName');
         else {
-            /** Establish database connection and select proper user */
+            $db = mysql_db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                  tblUserAccount_accId,
+                  tblUserAccount_loginName,
+                  tblUserAccount_email
+                FROM
+                  tblUserAccount
+                WHERE
+                  lower(tblUserAccount_loginName) = lower(:logName)'
+            );
+            $stmt->bind_param('logName', $loginName);
+            $stmt->execute();
+            $logName = $stmt->fetch_assoc();
+            if ($logName == false)
+                $this->setAccountError('loginNameUnknown');
+            else {
+                $this->setAccountID($logName['tblUserAccount_accId']);
+                $this->setLoginName($logName['tblUserAccount_loginName']);
+                $this->setEmail($logName['tblUserAccount_email']);
+            }
         }
     }
 
@@ -39,7 +62,23 @@ class Account {
         if(empty($password))
             $this->setAccountError('noLoginPwd');
         else {
-            /** Establish database connection and select proper user */
+            $db = mysql_db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                  tblUserAccount_pwd
+                FROM
+                  tblUserAccount
+                WHERE
+                  tblUserAccount_accId = lower(:aid)'
+            );
+            $stmt->bind_param('aid', $this->accId);
+            $stmt->execute();
+            $savedPwd = $stmt->fetch_assoc();
+
+            if ($password != miscellaneous::hasher($password, $savedPwd['tblUserAccount_pwd']))
+                $this->setAccountError('loginPwdWrong');
+            else
+                return true;
         }
     }
 
