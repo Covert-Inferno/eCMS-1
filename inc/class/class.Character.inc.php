@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dominic
+ * Filename: class.Character.inc.php
+ * User: 'Barracuda'
  * Date: 07.01.14
  * Time: 09:15
  */

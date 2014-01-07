@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dominic
+ * Filename: class.EveAPI.inc.php
+ * User: 'Barracuda'
  * Date: 06.01.14
  * Time: 16:47
  */

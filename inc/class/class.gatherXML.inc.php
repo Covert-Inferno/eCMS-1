@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dominic
+ * Filename: class.gatherXML.inc.php
+ * User: 'Barracuda'
  * Date: 06.01.14
  * Time: 16:55
  */
