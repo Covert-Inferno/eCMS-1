@@ -46,6 +46,11 @@ class EveAPI {
         return new \SimpleXMLElement($xml);
     }
 
+    public function getCallList() {
+        $xml = gatherXML::getXML($this->getApiLink() . '/api/calllist.xml.aspx');
+        return new \SimpleXMLElement($xml);
+    }
+
     /**
      * @param mixed $keyID
      */
