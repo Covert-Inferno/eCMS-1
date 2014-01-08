@@ -27,14 +27,15 @@ class Character {
         if(!isset($EveAPI) || !isset($charID))
             return false;
         else
-            return $EveAPI->fetchData('/char/CharacterSheet.xml.aspx', $data['characterId'] = $charID);
+            return $EveAPI->fetchData('/char/CharacterSheet.xml.aspx', $data = array('characterId' => $charID));
     }
 
     static function saveCharacter($EveAPI, $charID) {
         if(!isset($EveAPI) || !isset($charID))
             return false;
         else {
-            $charInfo = self::getCharacterList($EveAPI, $charID);
+            $charInfo = self::getCharacterSheet($EveAPI, $charID);
+            var_dump($charInfo);
             if(empty($charInfo))
                 return false;
             else {

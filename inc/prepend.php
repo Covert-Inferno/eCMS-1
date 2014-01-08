@@ -10,6 +10,9 @@
 error_reporting(1);
 ini_set('display_errors', 1);
 
+/** Start session */
+session_start();
+
 /** Include Smarty lib */
 require_once 'smarty/Smarty.class.php';
 
@@ -37,6 +40,13 @@ function autoload_classes($className) {
 /** Register class autoload with Smarty autoload */
 spl_autoload_register('autoload_classes');
 
+/** Set database object */
+\eCMS\database\db::setType('mysql');
+\eCMS\database\db::$host = 'localhost';
+\eCMS\database\db::$user = 'root';
+\eCMS\database\db::$pwd = '';
+\eCMS\database\db::$dbname = 'ecms';
+
 /** Load defined modules */
 if(isset($_GET['module'])) {
     $modulePath = 'inc/module/';
@@ -53,6 +63,6 @@ if(isset($_GET['submodule'])) {
     if(!file_exists($submodulePath . $submoduleName))
         printf('Submodule "' . $_GET['submodule'] . '" does not exist');
     else
-        include($submodulePath . $submoduleName);
+        require $submodulePath . $submoduleName;
 }
 

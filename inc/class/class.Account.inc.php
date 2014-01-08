@@ -9,7 +9,7 @@
 namespace eCMS\Account;
 
 
-use eCMS\database\mysql_db;
+use eCMS\database\db;
 use eCMS\Misc\miscellaneous;
 
 class Account {
@@ -31,10 +31,11 @@ class Account {
     }
 
     private function validateLoginName($loginName) {
-        if(empty($loginName))
+        if(empty($loginName)) {
             $this->setAccountError('noLoginName');
-        else {
-            $db = mysql_db::getInstance();
+            return false;
+        } else {
+            $db = db::getInstance();
             $stmt = $db->prepare(
                 'SELECT
                   tblUserAccount_accId,
@@ -48,13 +49,15 @@ class Account {
             $stmt->bind_param('logName', $loginName);
             $stmt->execute();
             $logName = $stmt->fetch_assoc();
-            if ($logName == false)
+            if ($logName == false) {
                 $this->setAccountError('loginNameUnknown');
-            else {
+                return false;
+            } else {
                 $this->setAccountID($logName['tblUserAccount_accId']);
                 $this->setLoginName($logName['tblUserAccount_loginName']);
                 $this->setEmail($logName['tblUserAccount_email']);
             }
+            return true;
         }
     }
 
@@ -62,7 +65,7 @@ class Account {
         if(empty($password))
             $this->setAccountError('noLoginPwd');
         else {
-            $db = mysql_db::getInstance();
+            $db = db::getInstance();
             $stmt = $db->prepare(
                 'SELECT
                   tblUserAccount_pwd
@@ -71,7 +74,7 @@ class Account {
                 WHERE
                   tblUserAccount_accId = lower(:aid)'
             );
-            $stmt->bind_param('aid', $this->accId);
+            $stmt->bind_param('aid', $this->accountID);
             $stmt->execute();
             $savedPwd = $stmt->fetch_assoc();
 
@@ -99,7 +102,6 @@ class Account {
      */
     public function setAccountError($accountError)
     {
-        /** @noinspection PhpIllegalArrayKeyTypeInspection */
         $this->accountError[$accountError] = 1;
     }
 

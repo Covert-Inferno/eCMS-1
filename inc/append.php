@@ -5,3 +5,4 @@
  * Date: 06.01.14
  * Time: 15:42
  */
+var_dump($_SESSION['account']);

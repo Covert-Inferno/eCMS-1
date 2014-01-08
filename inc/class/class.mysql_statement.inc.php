@@ -24,30 +24,33 @@ class mysql_statement extends statement {
         $this->query = $query;
     }
 
-    public function execute()
-    {
+    public function execute() {
         $binds = func_get_args();
-        foreach($binds as $index => $name)
+        foreach ($binds as $index => $name) {
             $this->binds[$index] = $name;
+        }
 
-        if(is_array($this->binds)) {
-            foreach($this->binds as $placeholder => $replace) {
-                if(is_numeric($replace))
-                    $this->query = str_replace(":$placeholder", mysql_real_escape_string($replace, $this->dbh), $this->$query);
+        if (is_array($this->binds)) {
+            foreach ($this->binds as $placeholder => $replace) {
+                if (is_numeric($replace))
+                    $this->query = str_replace(":$placeholder", mysql_real_escape_string($replace, $this->dbh), $this->query);
                 else
                     $this->query = str_replace(":$placeholder", '"' . mysql_real_escape_string($replace, $this->dbh) . '"', $this->query);
             }
         }
         $this->result = mysql_query($this->query);
-        if(mysql_errno($this->dbh))
+        if (mysql_errno($this->dbh)) {
             $this->error['execute'] = mysql_errno($this->dbh) . ': ' . mysql_error($this->dbh);
+        }
 
-        if(!$this->result)
+        if (!$this->result) {
             print_r($this->error);
+        }
 
         $this->lastid = mysql_insert_id($this->dbh);
-        if(mysql_errno($this->dbh))
+        if (mysql_errno($this->dbh)) {
             $this->error['execute'] = mysql_errno($this->dbh) . ': ' . mysql_error($this->dbh);
+        }
     }
 
     public function bind_param($placeholder, $replace)
