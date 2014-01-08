@@ -1,0 +1,1 @@
+        Copyright (C) 2007 - {'Y'|date} German Kings. All rights reserved.
