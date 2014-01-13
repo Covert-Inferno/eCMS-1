@@ -1,0 +1,322 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: url('../img/background.png') no-repeat #000000 50% 0%;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #bbbbbb;
+}
+
+a {
+    color: #ffaf28;
+    -webkit-transition:color 0.2s linear, background 0.2s linear;
+    -moz-transition:color 0.2s linear, background 0.2s linear;
+    -o-transition:color 0.2s linear, background 0.2s linear;
+    transition:color 0.2s linear, background 0.2s linear;
+}
+
+div #wrapper {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+div #contarea {
+    position: relative;
+    width: 1200px;
+}
+
+div #navbar {
+    position: relative;
+    width: 1200px;
+    height: 55px;
+    background: url('../img/nav_bar.png') no-repeat;
+    top: -15px;
+    text-align: center;
+    z-index: 1;
+}
+
+div #navbar a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+div #navbar a:hover {
+    color: #ffaf28;
+}
+
+div #usernav {
+    position: absolute;
+    background: url('../img/user_nav.png') no-repeat;
+    width: 522px;
+    height: 35px;
+    text-align: left;
+    right: 30px;
+    color: #ffffff;
+    z-index: 100;
+}
+
+div #usernav a {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+div #usernav a:hover {
+    text-decoration: underline;
+    color: #ffaf28;
+}
+
+div #usernav ul li {
+    list-style-type: none;
+    float: left;
+    line-height: 23px;
+    margin-right: 10px;
+}
+
+div #logo {
+    position: relative;
+    width: 271px;
+    height: 127px;
+    top: 10px;
+    z-index: 10;
+}
+
+div #leftnav {
+    position: absolute;
+    width: 275px;
+    top: 12px;
+    text-align: left;
+    left: 160px;
+}
+
+div #rightnav {
+    position: absolute;
+    width: 325px;
+    text-align: left;
+    top: 12px;
+    right: 60px;
+}
+
+div #leftnav ul {
+    position: relative;
+}
+
+div #leftnav ul li {
+    list-style-image: url('../img/nav_point.png');
+    font-size: 14px;
+    color: #ffffff;
+    float: left;
+    line-height: 12px;
+    text-shadow: 3px 2px 1px #000000;
+    position: relative;
+}
+
+div #leftnav ul li:hover > ul {
+    display: inline;
+    opacity: 1;
+}
+
+div #leftnav ul li ul {
+    position: absolute;
+    left: 0px;
+    padding-left: 30px;
+    top: 25px;
+    opacity: 0;
+    display: none;
+    background: url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    width: 120px;
+}
+
+div #leftnav ul li ul li {
+    list-style-image: url('../img/nav_point.png');
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 20px;
+    text-shadow: 3px 2px 1px #000000;
+    position: relative;
+    width: 120px;
+}
+
+div #rightnav ul {
+    position: relative;
+}
+
+div #rightnav ul li {
+    list-style-image: url('../img/nav_point.png');
+    font-size: 14px;
+    color: #ffffff;
+    float: left;
+    line-height: 12px;
+    text-shadow: 3px 2px 1px #000000;
+    position: relative;
+}
+
+div #rightnav ul li:hover > ul {
+    display: inline;
+    opacity: 1;
+}
+
+div #rightnav ul li ul {
+    position: absolute;
+    left: 0px;
+    padding-left: 30px;
+    top: 25px;
+    opacity: 0;
+    display: none;
+    background: url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    width: 120px;
+}
+
+div #rightnav ul li ul li {
+    list-style-image: url('../img/nav_point.png');
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 20px;
+    text-shadow: 3px 2px 1px #000000;
+    position: relative;
+    width: 120px;
+}
+
+div #main {
+    position: relative;
+    width: 936px;
+    margin-top: 75px;
+}
+
+div #content {
+    position: relative;
+    width: 712px;
+    float: left;
+}
+
+div #contenttop {
+    position: relative;
+    width: 712px;
+    height: 43px;
+    background: url('../img/content-top.png') no-repeat;
+    padding-left: 7px;
+}
+
+div #contenttopic {
+    position: relative;
+    width: 687px;
+    height: 39px;
+    background: url('../img/content_head.png') no-repeat;
+    top: 4px;
+    font-size: 12px;
+    line-height: 32px;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 20px;
+    text-shadow: 3px 2px 1px #000000;
+}
+
+div #contentmid {
+    position: relative;
+    width: 712px;
+    background: url('../img/content-mid.png') repeat-y;
+}
+
+div #contentframe {
+    position: relative;
+    width: 680px;
+    text-align: justify;
+}
+
+div #contentbottom {
+    position: relative;
+    width: 712px;
+    height: 16px;
+    background: url('../img/content-bottom.png') no-repeat;
+}
+
+div #sidebar {
+    position: relative;
+    width: 224px;
+    float: left;
+}
+
+div #sidebartop {
+    position: relative;
+    width: 224px;
+    height: 43px;
+    background: url('../img/sidebar-top.png') no-repeat;
+}
+
+div #sidebarmid {
+    position: relative;
+    width: 224px;
+    background: url('../img/sidebar-mid.png') repeat-y;
+}
+
+div #sidebarbottom {
+    position: relative;
+    width: 224px;
+    height: 16px;
+    background: url('../img/sidebar-bottom.png') no-repeat;
+}
+
+div #footer {
+    position: relative;
+    width: 1200px;
+    height: 55px;
+    background: url('../img/footer.png') no-repeat;
+    text-align: left;
+}
+
+div #copyright {
+    position: absolute;
+    width: 300px;
+    left: 150px;
+    height: 20px;
+    top: 16px;
+}
+
+div #render {
+    position: absolute;
+    width: 300px;
+    text-align: center;
+    left: 450px;
+    top: 10px;
+}
+
+div #design {
+    position: absolute;
+    width: 300px;
+    right: 120px;
+    height: 20px;
+    top: 16px;
+}
+
+div #imprint {
+    position: absolute;
+    width: 50px;
+    right: 100px;
+    height: 20px;
+    top: 16px;
+}
+
+/* Content related elements (like news header etc) */
+
+div .subhead {
+    position: relative;
+    width: 680px;
+    height: 52px;
+    background: url('../img/sub_head.png') no-repeat;
+}
+
+div #contentframe .text {
+    position: relative;
+    width: 660px;
+    text-align: justify;
+    left: 8px;
+}
