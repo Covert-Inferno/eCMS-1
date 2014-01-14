@@ -7,7 +7,7 @@
                             <div id="contentframe">
                                 <!--<div class="subhead"></div>-->
                                 <div class="text">
-{$content}
+{include file=$content}
                                 </div>
                             </div>
                         </div>

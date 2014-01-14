@@ -58,7 +58,7 @@ if(isset($_GET['module'])) {
 }
 
 if(isset($_GET['submodule'])) {
-    $submodulePath = './include/module/' . $_GET['module'] . '/';
+    $submodulePath = 'inc/module/' . $_GET['module'] . '/';
     $submoduleName = 'submodule.' . $_GET['submodule'] . '.inc.php';
     if(!file_exists($submodulePath . $submoduleName))
         printf('Submodule "' . $_GET['submodule'] . '" does not exist');

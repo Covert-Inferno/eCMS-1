@@ -18,6 +18,10 @@ a {
     transition:color 0.2s linear, background 0.2s linear;
 }
 
+a:hover {
+    color: #ffffff;
+}
+
 div #wrapper {
     position: relative;
     width: 100%;
@@ -135,7 +139,6 @@ div #leftnav ul li ul {
 div #leftnav ul li ul li {
     list-style-image: url('../img/nav_point.png');
     font-size: 12px;
-    text-transform: uppercase;
     color: #ffffff;
     line-height: 20px;
     text-shadow: 3px 2px 1px #000000;
@@ -162,7 +165,7 @@ div #rightnav ul li:hover > ul {
     opacity: 1;
 }
 
-div #rightnav ul li ul {
+div #rightnav ul li > ul {
     position: absolute;
     left: 0px;
     padding-left: 30px;
@@ -178,7 +181,6 @@ div #rightnav ul li ul {
 div #rightnav ul li ul li {
     list-style-image: url('../img/nav_point.png');
     font-size: 12px;
-    text-transform: uppercase;
     color: #ffffff;
     line-height: 20px;
     text-shadow: 3px 2px 1px #000000;
