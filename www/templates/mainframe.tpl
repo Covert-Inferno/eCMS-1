@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>eCMS</title>
+        <title>German Kings Reloaded</title>
         <link rel="stylesheet" type="text/css" href="./media/css/gerki.css">
     </head>
     <body>

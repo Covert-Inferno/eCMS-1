@@ -14,9 +14,12 @@ if (isset($_GET['action'])) {
             $smarty->assign('currentContentHead', 'German Kings Registrierung');
             $smarty->assign('content', 'account_registration.tpl');
         } else {
+            $smarty->assign('currentContentHead', 'German Kings Registrierung erfolgreich');
             $smarty->assign('content', 'account_registration_success.tpl');
         }
         $smarty->assign('registration', $registration);
     }
-} else
+} else {
+    $smarty->assign('currentContentHead', 'German Kings Registrierung');
     $smarty->assign('content', 'account_registration.tpl');
+}

@@ -64,16 +64,23 @@ class Registration {
     private function validateEmail($email, $emailRepeat) {
         if (empty($email))
             $this->registrationError['noEmail'] = 1;
+        else
+            $this->registrationError['noEmail'] = 0;
 
-        if (empty($email_repeat))
+        if (empty($emailRepeat))
             $this->registrationError['noEmailRepeat'] = 1;
-
+        else
+            $this->registrationError['noEmailRepeat'] = 0;
         if (strpos($email, '@') === false)
             $this->registrationError['emailNotAnEmail'] = 1;
+        else
+            $this->registrationError['emailNotAnEmail'] = 0;
 
         if ($this->registrationError['noEmail'] == 0 && $this->registrationError['noEmailRepeat'] == 0) {
             if ($email != $emailRepeat)
                 $this->registrationError['emailNotEmailRepeat'] = 1;
+            else
+                $this->registrationError['emailNotEmailRepeat'] = 0;
         }
 
         if ($this->registrationError['noEmail'] == 0 && $this->registrationError['noEmailRepeat'] == 0 &&

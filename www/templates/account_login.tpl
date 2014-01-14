@@ -15,7 +15,7 @@
         </form>
         <br />
         <br />
-        Noch keinen Account bei den German Kings? Die Erstellung ist kostenlos und einfach. <a href="?module=registration&action=addAccount" target="_self">Account anlegen</a>.
+        Noch keinen Account bei den German Kings? Die Erstellung ist kostenlos und einfach. <a href="?module=registration" target="_self">Account anlegen</a>.
         <!--<br />
         <u>Hinweis f&uuml;r Mitglieder der Corporation</u>: Haltet einen definierten
         API-Key bereit, um die Erstellung des Accounts zu verbessern und die Informationen automatisch mit eurem Account zu verkn&uuml;pfen.
