@@ -95,6 +95,7 @@ class Registration {
     public function addAccount($accountData) {
         if (!isset($accountData)) {
             // Error Handling
+            return false;
         } else {
             if ($this->validateData($accountData) == false)
                 return false;

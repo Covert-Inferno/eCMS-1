@@ -17,7 +17,7 @@
                             </li>
 {if !isset($smarty.session['account'])}
                             <li>
-                                <a href="" target="_self">Registrieren</a>
+                                <a href="?module=registration&action=addAccount" target="_self">Registrieren</a>
                             </li>
 {else}
                             <li>

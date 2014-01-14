@@ -13,6 +13,12 @@ ini_set('display_errors', 1);
 /** Start session */
 session_start();
 
+/** If a cookie is found, create the account session */
+if(isset($_COOKIE['gerki'])) {
+    $_SESSION['account']['accountID'] = $_COOKIE['gerki']['accountID'];
+    $_SESSION['account']['loginName'] = $_COOKIE['gerki']['loginName'];
+}
+
 /** Include Smarty lib */
 require_once 'smarty/Smarty.class.php';
 
@@ -42,10 +48,10 @@ spl_autoload_register('autoload_classes');
 
 /** Set database object */
 \eCMS\database\db::setType('mysql');
-\eCMS\database\db::$host = 'localhost';
-\eCMS\database\db::$user = 'root';
-\eCMS\database\db::$pwd = '';
-\eCMS\database\db::$dbname = 'ecms';
+\eCMS\database\db::setHost('localhost');
+\eCMS\database\db::setUser('root');
+\eCMS\database\db::setPwd('');
+\eCMS\database\db::setDbname('ecms');
 
 /** Load defined modules */
 if(isset($_GET['module'])) {

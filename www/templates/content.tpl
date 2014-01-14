@@ -7,7 +7,7 @@
                             <div id="contentframe">
                                 <!--<div class="subhead"></div>-->
                                 <div class="text">
-{include file=$content}
+{if isset($content)}{include file=$content}{else}Test{/if}
                                 </div>
                             </div>
                         </div>

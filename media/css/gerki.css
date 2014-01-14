@@ -22,6 +22,45 @@ a:hover {
     color: #ffffff;
 }
 
+input[type=text], input[type=password] {
+    background: transparent url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    border: 0px transparent;
+    -moz-box-shadow: 0 1px 1px 2px #20272e;
+    -webkit-box-shadow: 0 1px 1px 2px #20272e;
+    box-shadow: 0 1px 1px 2px #20272e;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    padding: 2px 5px;
+}
+
+input .error {
+    border: 1px solid #ff0000;
+}
+
+input[type=submit], input[type=button], input[type=reset] {
+    background: transparent url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    border: 0px transparent;
+    -moz-box-shadow: 0 1px 1px 2px #20272e;
+    -webkit-box-shadow: 0 1px 1px 2px #20272e;
+    box-shadow: 0 1px 1px 2px #20272e;
+    color: #ffffff;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
+    color: #ffaf28;
+    -webkit-transition:color 0.2s linear, background 0.2s linear;
+    -moz-transition:color 0.2s linear, background 0.2s linear;
+    -o-transition:color 0.2s linear, background 0.2s linear;
+    transition:color 0.2s linear, background 0.2s linear;
+}
+
 div #wrapper {
     position: relative;
     width: 100%;
@@ -119,21 +158,26 @@ div #leftnav ul li {
 }
 
 div #leftnav ul li:hover > ul {
-    display: inline;
+    visibility: visible;
     opacity: 1;
+    transition-delay: 0s;
 }
 
 div #leftnav ul li ul {
     position: absolute;
-    left: 0px;
+    left: 0;
     padding-left: 30px;
     top: 25px;
     opacity: 0;
-    display: none;
+    visibility: hidden;
     background: url('../img/nav_subnav_bg.png') repeat;
     border-radius: 5px;
     border: 1px solid #000000;
     width: 120px;
+    -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    -moz-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    -o-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 div #leftnav ul li ul li {
@@ -161,21 +205,26 @@ div #rightnav ul li {
 }
 
 div #rightnav ul li:hover > ul {
-    display: inline;
+    visibility: visible;
     opacity: 1;
+    transition-delay: 0s;
 }
 
 div #rightnav ul li > ul {
     position: absolute;
-    left: 0px;
+    left: 0;
     padding-left: 30px;
     top: 25px;
     opacity: 0;
-    display: none;
+    visibility: hidden;
     background: url('../img/nav_subnav_bg.png') repeat;
     border-radius: 5px;
     border: 1px solid #000000;
     width: 120px;
+    -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    -moz-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    -o-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 div #rightnav ul li ul li {

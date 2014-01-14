@@ -6,14 +6,16 @@
  * Time: 22:37
  */
 
-$registration = new registration();
+$registration = new \eCMS\Account\Registration();
 
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'addAccount') {
-        if($registration->addAccount($_POST) == false)
+        if($registration->addAccount($_POST) == false) {
+            $smarty->assign('currentContentHead', 'German Kings Registrierung');
             $smarty->assign('content', 'account_registration.tpl');
-        else
+        } else {
             $smarty->assign('content', 'account_registration_success.tpl');
+        }
         $smarty->assign('registration', $registration);
     }
 } else
