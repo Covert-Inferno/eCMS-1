@@ -3,6 +3,8 @@
     <head>
         <title>German Kings Reloaded</title>
         <link rel="stylesheet" type="text/css" href="./media/css/gerki.css">
+        <link rel="shortcut icon" href="./media/img/favicon.ico" type="image/x-icon" />
+        <script src="./inc/ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <div id="wrapper" align="center">

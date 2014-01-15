@@ -37,7 +37,8 @@ function autoload_classes($className) {
     $className = explode('\\', $className);
     $classFileName = 'class.' . end($className) . '.inc.php';
     if(!file_exists($classPath . $classFileName)) {
-        printf('Class "' . end($className) . '" does not exist');
+        $smarty->assign('currentContentHead', 'German Kings 404 - Seite nicht gefunden');
+        $smarty->assign('content', '404.tpl');
     } else {
         require $classPath . $classFileName;
     }
@@ -57,17 +58,20 @@ spl_autoload_register('autoload_classes');
 if(isset($_GET['module'])) {
     $modulePath = 'inc/module/';
     $moduleName = 'module.' . $_GET['module'] . '.inc.php';
-    if(!file_exists($modulePath . $moduleName))
-        printf('Module "' . $_GET['module'] . '" does not exist');
-    else
+    if(!file_exists($modulePath . $moduleName)) {
+        $smarty->assign('currentContentHead', 'German Kings 404 - Seite nicht gefunden');
+        $smarty->assign('content', '404.tpl');
+    } else
         require $modulePath . $moduleName;
 }
 
 if(isset($_GET['submodule'])) {
     $submodulePath = 'inc/module/' . $_GET['module'] . '/';
     $submoduleName = 'submodule.' . $_GET['submodule'] . '.inc.php';
-    if(!file_exists($submodulePath . $submoduleName))
-        printf('Submodule "' . $_GET['submodule'] . '" does not exist');
+    if(!file_exists($submodulePath . $submoduleName)) {
+        $smarty->assign('currentContentHead', 'German Kings 404 - Seite nicht gefunden');
+        $smarty->assign('content', '404.tpl');
+    }
     else
         require $submodulePath . $submoduleName;
 }

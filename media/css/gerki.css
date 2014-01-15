@@ -22,7 +22,7 @@ a:hover {
     color: #ffffff;
 }
 
-input[type=text], input[type=password] {
+.inputField {
     background: transparent url('../img/nav_subnav_bg.png') repeat;
     border-radius: 5px;
     border: 0px transparent;
@@ -35,7 +35,7 @@ input[type=text], input[type=password] {
     padding: 2px 5px;
 }
 
-input[type=submit], input[type=button], input[type=reset] {
+.pushButton {
     background: transparent url('../img/nav_subnav_bg.png') repeat;
     border-radius: 5px;
     border: 0px transparent;
@@ -49,7 +49,7 @@ input[type=submit], input[type=button], input[type=reset] {
     cursor: pointer;
 }
 
-input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
+.pushButton:hover {
     color: #ffaf28;
     -webkit-transition:color 0.2s linear, background 0.2s linear;
     -moz-transition:color 0.2s linear, background 0.2s linear;
@@ -57,8 +57,24 @@ input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
     transition:color 0.2s linear, background 0.2s linear;
 }
 
-input .error {
+.error {
     border: 1px solid #ff0000 !important;
+}
+
+.selectBox {
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 10px;
+    background: transparent url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    color: #ffffff;
+    border: 0px transparent;
+    -moz-box-shadow: 0 1px 1px 2px #20272e;
+    -webkit-box-shadow: 0 1px 1px 2px #20272e;
+    box-shadow: 0 1px 1px 2px #20272e;
+}
+
+.selectOption {
+    background: #000000;
 }
 
 div #wrapper {
@@ -358,16 +374,29 @@ div #imprint {
 
 /* Content related elements (like news header etc) */
 
-div .subhead {
-    position: relative;
-    width: 680px;
-    height: 52px;
-    background: url('../img/sub_head.png') no-repeat;
-}
-
 div #contentframe .text {
     position: relative;
     width: 660px;
     text-align: justify;
     left: 8px;
+}
+
+div .newsTitle {
+    position: relative;
+    width: 668px;
+    height: 42px;
+    background: url('../img/sub_head.png') no-repeat;
+    left: -8px;
+    padding-left: 12px;
+    padding-top: 10px;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 3px 2px 1px #000000;
+    color: #ffffff;
+}
+
+.newsFrom {
+    font-weight: normal;
+    font-size: 10px;
 }

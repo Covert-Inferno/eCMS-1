@@ -5,9 +5,8 @@
                         </div>
                         <div id="contentmid">
                             <div id="contentframe">
-                                <!--<div class="subhead"></div>-->
                                 <div class="text">
-{if isset($content)}{include file=$content}{else}Test{/if}
+{if isset($content)}{include file=$content}{else}{include file='administration/news_create.tpl'}{/if}
                                 </div>
                             </div>
                         </div>

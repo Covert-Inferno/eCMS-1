@@ -32,19 +32,19 @@
                             </li>{/if}
                         </ul>
                     </div>
-                    <div id="logo"><a href="" target="_self"><img src="./media/img/gerki_logo.png" border="0" width="271" height="127" alt="" /></a></div>
+                    <div id="logo"><a href="?module=news" target="_self"><img src="./media/img/gerki_logo.png" border="0" width="271" height="127" alt="" /></a></div>
                     <div id="navbar">
                         <div id="leftnav">
                             <ul>
-                                <li style="padding-right: 80px;"><b><a href="" target="_self">NEWS</a></b></li>
-                                <li><b><a href="" target="_self">CORPORATION</a></b><br /><span style="font-size: 10px; color: #bbb">Beschreibung und Infos</span>
+                                <li style="padding-right: 80px;"><b><a href="?module=news" target="_self">NEWS</a></b></li>
+                                <li><b><a href="#" target="_self">CORPORATION</a></b><br /><span style="font-size: 10px; color: #bbb">Beschreibung und Infos</span>
                                     <ul>
-                                        <li><a href="" target="_self">Beschreibung</a></li>
-                                        <li><a href="" target="_self">Informationen</a></li>
-                                        <li><a href="" target="_self">&gt; Mitglieder</a></li>
-                                        <li><a href="" target="_self">&gt; Aufgaben</a></li>
-                                        <li><a href="" target="_self">Diplomatie</a></li>
-                                        <li><a href="" target="_self">Bewerbung</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=description" target="_self">Beschreibung</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=information" target="_self">Informationen</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=members" target="_self">&gt; Mitglieder</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=assignment" target="_self">&gt; Aufgaben</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=diplomacy" target="_self">Diplomatie</a></li>
+                                        <li><a href="?module=page&page=corporation&sub=application" target="_self">Bewerbung</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -52,17 +52,17 @@
                         </div>
                         <div id="rightnav">
                             <ul>
-                                <li style="padding-right: 80px;"><b><a href="" target="_self">COMMUNITY</a></b><br /><span style="font-size: 10px; color: #bbb">Forum und Tools</span>
+                                <li style="padding-right: 80px;"><b><a href="#" target="_self">COMMUNITY</a></b><br /><span style="font-size: 10px; color: #bbb">Forum und Tools</span>
                                     <ul>
-                                        <li><a href="" target="_self">Forum</a></li>
-                                        <li><a href="" target="_self">Allianzkarte</a></li>
-                                        <li><a href="" target="_self">Downloads</a></li>
-                                        <li><a href="" target="_self">Kalender</a></li>
-                                        <li><a href="" target="_self">Galerie</a></li>
-                                        <li><a href="" target="_self">Links</a></li>
+                                        <li><a href="?module=page&page=community&sub=forum" target="_self">Forum</a></li>
+                                        <li><a href="?module=page&page=community&sub=influence" target="_self">Allianzkarte</a></li>
+                                        <li><a href="?module=page&page=community&sub=downloads" target="_self">Downloads</a></li>
+                                        <li><a href="?module=page&page=community&sub=calendar" target="_self">Kalender</a></li>
+                                        <li><a href="?module=page&page=community&sub=gallery" target="_self">Galerie</a></li>
+                                        <li><a href="?module=page&page=community&sub=links" target="_self">Links</a></li>
                                     </ul>
                                 </li>
-                                <li><b><a href="" target="_self">KILLBOARD</a></b></li>
+                                <li><b><a href="?module=killboard" target="_self">KILLBOARD</a></b></li>
                             </ul>
                         </div>
                         <div style="clear: both;"></div>

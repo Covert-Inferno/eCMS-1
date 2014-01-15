@@ -1,17 +1,17 @@
         <form action="?module=account&action=login" method="post" accept-charset="iso-8859-1" autocomplete="off">
             <span style="display: block; float: left; width: 150px;">Loginname:</span>
             <label>
-                <input type="text" name="loginName" style="width: 250px;" value="{$smarty.post.email}"/>
+                <input type="text" class="inputField" name="loginName" style="width: 250px;" value="{$smarty.post.email}"/>
             </label>
             <br />
             <br />
             <span style="display: block; float: left; width: 150px;">Passwort:</span>
             <label>
-                <input type="password" style="width: 250px;" name="loginPwd" />
+                <input type="password" class="inputField" style="width: 250px;" name="loginPwd" />
             </label>
             <br />
             <br />
-            <input type="submit" value="Login" name="submit" />&nbsp;&nbsp;<input type="button" value="Passwort vergessen?" name="lostPassword" />
+            <input type="submit" class="pushButton" value="Login" name="submit" />&nbsp;&nbsp;<input type="button" class="pushButton" value="Passwort vergessen?" name="lostPassword" />
         </form>
         <br />
         <br />
