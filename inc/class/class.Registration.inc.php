@@ -19,6 +19,7 @@ class Registration {
     private $email;
     public $registrationError = array(
         'noLoginName' => 0,
+        'loginAlreadyExists' => 0,
         'noLoginPwd' => 0,
         'noLoginPwdRepeat' => 0,
         'noEmail' => 0,
@@ -27,7 +28,9 @@ class Registration {
         'pwdNotPwdRepeat' => 0,
         'pwdTooShort' => 0,
         'emailNotEmailRepeat' => 0,
-        'wrongEmailSyntax' => 0
+        'wrongEmailSyntax' => 0,
+        'emailAlreadyExists' => 0,
+        'noPrivacy' => 0
     );
 
     public function __construct() {}
@@ -37,8 +40,25 @@ class Registration {
             $this->registrationError['noLoginName'] = 1;
         elseif(strlen($loginName) < 3)
             $this->registrationError['loginNameTooShort'] = 1;
-        else
-            $this->loginName = $loginName;
+        else {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                    tblUserAccount_loginName
+                FROM
+                    tblUserAccount
+                WHERE
+                    lower(tblUserAccount_loginName) = lower(:lName)'
+            );
+            $stmt->bind_param('lName', $loginName);
+            $stmt->execute();
+            $result = $stmt->fetch_assoc();
+            if($result == false)
+                $this->loginName = $loginName;
+            else
+                $this->registrationError['loginAlreadyExists'] = 1;
+
+        }
     }
 
     private function validatePassword($pwd, $pwdRepeat) {
@@ -85,13 +105,36 @@ class Registration {
 
         if ($this->registrationError['noEmail'] == 0 && $this->registrationError['noEmailRepeat'] == 0 &&
             $this->registrationError['emailNotAnEmail'] == 0 && $this->registrationError['emailNotEmailRepeat'] == 0)
-            $this->email = $email;
+        {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                    tblUserAccount_loginName
+                FROM
+                    tblUserAccount
+                WHERE
+                    lower(tblUserAccount_email) = lower(:accountmail)'
+            );
+            $stmt->bind_param('accountmail', $email);
+            $stmt->execute();
+            $result = $stmt->fetch_assoc();
+            if($result == false)
+                $this->email = $email;
+            else
+                $this->registrationError['emailAlreadyExists'] = 1;
+        }
+    }
+
+    private function validatePrivacy($privacy) {
+        if(empty($privacy) || $privacy == false)
+            $this->registrationError['noPrivacy'] = 1;
     }
 
     private function validateData($accountData) {
         $this->validateLoginName($accountData['loginName']);
         $this->validatePassword($accountData['loginPwd'], $accountData['loginPwd_repeat']);
         $this->validateEmail($accountData['email'], $accountData['email_repeat']);
+        $this->validatePrivacy($accountData['privacy']);
 
         if (in_array(1, $this->registrationError))
             return false;
@@ -110,11 +153,11 @@ class Registration {
                 $db = db::getInstance();
                 $stmt = $db->prepare(
                     'INSERT INTO
-                    tblUserAccount
-                SET
-                    tblUserAccount_loginName = :lName,
-                    tblUserAccount_pwd = :password,
-                    tblUserAccount_email = :accountmail'
+                        tblUserAccount
+                    SET
+                        tblUserAccount_loginName = :lName,
+                        tblUserAccount_pwd = :password,
+                        tblUserAccount_email = :accountmail'
                 );
                 $stmt->bind_param('lName', $this->loginName);
                 $stmt->bind_param('password', $this->password);

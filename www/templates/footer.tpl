@@ -8,5 +8,5 @@
                         Design &amp; Code by GERKI | Hawk Misado.
                     </div>
                     <div id="imprint">
-                        <a href="imprint" target="_self">Impressum</a>
+                        <a href="imprint" target="_self">Impressum &amp; Datenschutz</a>
                     </div>
