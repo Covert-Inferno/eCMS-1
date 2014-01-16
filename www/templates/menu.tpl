@@ -36,7 +36,12 @@
                     <div id="navbar">
                         <div id="leftnav">
                             <ul>
-                                <li style="padding-right: 80px;"><b><a href="?module=news" target="_self">NEWS</a></b></li>
+                                <li style="padding-right: 80px;"><b><a href="?module=news" target="_self">NEWS</a></b><br /><span style="font-size: 10px; color: #bbb">Archiv</span>
+                                    <ul>
+                                        <li><a href="?module=news&submodule=archive" target="_self">Archiv</a></li>
+                                        <li><a href="?module=news&action=writeNews" target="_self">News schreiben</a></li>
+                                    </ul>
+                                </li>
                                 <li><b><a href="#" target="_self">CORPORATION</a></b><br /><span style="font-size: 10px; color: #bbb">Beschreibung und Infos</span>
                                     <ul>
                                         <li><a href="?module=page&page=corporation&sub=description" target="_self">Beschreibung</a></li>

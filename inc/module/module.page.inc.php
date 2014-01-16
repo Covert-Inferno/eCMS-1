@@ -7,7 +7,7 @@
  */
 
 if(isset($_GET['page'])) {
-
+    $smarty->assign('content', 'page.tpl');
     if(isset($_GET['sub'])) {
 
     }

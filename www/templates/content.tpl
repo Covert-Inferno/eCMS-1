@@ -6,7 +6,7 @@
                         <div id="contentmid">
                             <div id="contentframe">
                                 <div class="text">
-{if isset($content)}{include file=$content}{else}{include file='administration/news_create.tpl'}{/if}
+<!--{include file=$content}-->{include file='profile/profile_edit.tpl'}
                                 </div>
                             </div>
                         </div>

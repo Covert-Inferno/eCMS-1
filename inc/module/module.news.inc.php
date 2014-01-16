@@ -6,6 +6,13 @@
  * Time: 12:30
  */
 
-$smarty->assign('currentContentHead', 'German Kings News');
-$smarty->assign('news', \eCMS\Administration\News\news::fetchNews());
-$smarty->assign('content', 'news.tpl');
+if(isset($_GET['action'])) {
+    if($_GET['action'] == 'writeNews') {
+        $smarty->assign('currentContentHead', 'German Kings News schreiben');
+        $smarty->assign('content', 'administration/news_create.tpl');
+    }
+} else {
+    $smarty->assign('currentContentHead', 'German Kings News');
+    $smarty->assign('news', \eCMS\Administration\News\news::fetchNews());
+    $smarty->assign('content', 'news.tpl');
+}
