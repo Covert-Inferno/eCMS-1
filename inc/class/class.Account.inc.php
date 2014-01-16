@@ -92,7 +92,6 @@ class Account {
         if(in_array(1, $this->getAccountError()))
             return false;
         else {
-            #$this->gatherInformation();
             return true;
         }
     }

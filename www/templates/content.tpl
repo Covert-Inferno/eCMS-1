@@ -6,7 +6,7 @@
                         <div id="contentmid">
                             <div id="contentframe">
                                 <div class="text">
-<!--{include file=$content}-->{include file='profile/profile_edit.tpl'}
+{include file=$content}<!--{include file='account/account_edit.tpl'}-->
                                 </div>
                             </div>
                         </div>

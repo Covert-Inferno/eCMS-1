@@ -19,7 +19,7 @@
                 <input type="text" class="inputField" style="width: 250px;" name="email_repeat" value="{$smarty.post.email_repeat}" />{if $registration->registrationError['noEmailRepeat'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Bitte E-Mail wiederholen</span>{elseif $registration->registrationError['emailNotEmailRepeat'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; E-Mails stimmen nicht &uuml;berein</span>{/if}
                 <br />
                 <br />
-                <input type="checkbox" name="privacy" value="true" style="width: 10px; height: 10px;" /> Ich habe die Hinweise zum <a href="" target="_blank">Datenschutz</a> gelesen und akzeptiert.{if $registration->registrationError['noPrivacy'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Datenschutzrichtlinien nicht akzeptiert.</span>{/if}
+                <input type="checkbox" name="privacy" value="true" style="width: 10px; height: 10px;" /> Ich habe die Hinweise zum <a href="?module=page&page=imprint" target="_blank">Datenschutz</a> gelesen und akzeptiert.{if $registration->registrationError['noPrivacy'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Datenschutzrichtlinien nicht akzeptiert.</span>{/if}
                 <br />
                 <br />
                 <input type="submit" class="pushButton" value="Registrierung abschlie&szlig;en" name="submit" />

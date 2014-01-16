@@ -1,17 +1,7 @@
         <form action="" method="post" accept-charset="iso-8859-1">
-            <span style="display: block; float: left; width: 150px;">Loginname:</span>
-            Loginname <i>(nicht &auml;nderbar)</i>
-            <br />
-            <br />
             <label>
                 <span style="display: block; float: left; width: 150px;">Realname:</span>
                 <input type="text" class="inputField" name="realname" style="width: 250px;" value="{$smarty.post.realname}"/>
-            </label>
-            <br />
-            <br />
-            <label>
-                <span style="display: block; float: left; width: 150px;">E-Mail:</span>
-                <input type="text" class="inputField" name="email" style="width: 250px;" value="{$smarty.post.email}"/>
             </label>
             <br />
             <br />

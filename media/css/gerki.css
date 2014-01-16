@@ -57,6 +57,28 @@ a:hover {
     transition:color 0.2s linear, background 0.2s linear;
 }
 
+.pushButtonDelete {
+    background: transparent url('../img/nav_subnav_bg.png') repeat;
+    border-radius: 5px;
+    border: 0px transparent;
+    -moz-box-shadow: 0 1px 1px 2px #20272e;
+    -webkit-box-shadow: 0 1px 1px 2px #20272e;
+    box-shadow: 0 1px 1px 2px #20272e;
+    color: #ff0000;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.pushButtonDelete:hover {
+    color: #ffaf28;
+    -webkit-transition:color 0.2s linear, background 0.2s linear;
+    -moz-transition:color 0.2s linear, background 0.2s linear;
+    -o-transition:color 0.2s linear, background 0.2s linear;
+    transition:color 0.2s linear, background 0.2s linear;
+}
+
 .error {
     border: 1px solid #ff0000 !important;
 }
