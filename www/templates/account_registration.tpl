@@ -1,3 +1,11 @@
+<div id="contenttop">
+    <div id="contenttopic">
+        <img src="./media/img/content_point.png" border="0" width="15" height="9" alt="" /> <b>German Kings Registrierung</b>
+    </div>
+</div>
+<div id="contentmid">
+    <div id="contentframe">
+        <div class="text">
             <form action="?module=registration&action=addAccount" method="post" accept-charset="iso-8859-1" autocomplete="off">
                 <span style="display: block; float: left; width: 150px;">Loginname (min. 3 Zeichen):</span>
                 <input type="text" class="inputField" style="width: 250px;" name="loginName" value="{$smarty.post.loginName}" />{if $registration->registrationError['noLoginName'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Bitte Loginnamen angeben</span>{elseif $registration->registrationError['loginNameTooShort'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Loginname muss mehr als 3 Zeichen enthalten</span>{elseif $registration->registrationError['loginAlreadyExists'] == 1}<span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&laquo; Loginname bereits vergeben</span>{/if}

@@ -1,3 +1,11 @@
+<div id="contenttop">
+    <div id="contenttopic">
+        <img src="./media/img/content_point.png" border="0" width="15" height="9" alt="" /> <b>German Kings Login</b>
+    </div>
+</div>
+<div id="contentmid">
+    <div id="contentframe">
+        <div class="text">
         <form action="?module=account&action=login" method="post" accept-charset="iso-8859-1" autocomplete="off">
             <span style="display: block; float: left; width: 150px;">Loginname:</span>
             <label>

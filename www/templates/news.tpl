@@ -1,3 +1,11 @@
+<div id="contenttop">
+    <div id="contenttopic">
+        <img src="./media/img/content_point.png" border="0" width="15" height="9" alt="" /> <b>German Kings News</b>
+    </div>
+</div>
+<div id="contentmid">
+    <div id="contentframe">
+        <div class="text">
 {foreach name=newsArray item=singleNews from=$news}
     <div class="newsTitle">
         <img src="./media/img/news_point.png" border="0" width="23" height="25" alt="" align="left" style="margin-right: 5px;" />
