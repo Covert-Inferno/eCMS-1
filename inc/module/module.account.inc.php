@@ -18,8 +18,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
         else {
             $_SESSION['account']['accountID'] = serialize($account->getAccountID());
             $_SESSION['account']['loginName'] = serialize($account->getLoginName());
+            $_SESSION['account']['group'] = serialize($account->getGroup());
             setcookie('gerki[accountID]', serialize($account->getAccountID()), time()+60*60*24*30);
             setcookie('gerki[loginName]', serialize($account->getLoginName()), time()+60*60*24*30);
+            setcookie('gerki[group]', serialize($account->getGroup()), time()+60*60*24*30);
             header("Location: ?module=account&submodule=overview");
         }
         $_POST = '';
@@ -33,6 +35,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout') {
     session_destroy();
     setcookie('gerki[accountID]', '', time()-1);
     setcookie('gerki[loginName]', '', time()-1);
+    setcookie('gerki[group]', '', time()-1);
     $_COOKIE['gerki'] = '';
     unset($_COOKIE['gerki']);
     $smarty->assign('content', 'welcome.tpl');

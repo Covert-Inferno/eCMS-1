@@ -25,6 +25,7 @@ class Account {
         'noLoginPwd' => 0,
         'loginPwdWrong' => 0
     );
+    private $group;
 
     public function __construct() {
 
@@ -85,6 +86,29 @@ class Account {
         }
     }
 
+    private function getGroupInformation($accountId) {
+        if(!empty($accountId)) {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                    tblGroup_hash
+                FROM
+                    tblGroup
+                JOIN
+                    tblGroupUser
+                ON
+                    tblGroupUser_groupId = tblGroup_id
+                WHERE
+                    tblGroupUser_accountId = :acid'
+            );
+            $stmt->bind_param('acid', $this->getAccountID());
+            $stmt->execute();
+            $group = $stmt->fetch_array();
+            $this->setGroup($group);
+            #die(var_dump($this->getGroup()));
+        }
+    }
+
     public function loginUser($loginData) {
         $this->validateLoginName($loginData['loginName']);
         $this->validatePassword($loginData['loginPwd']);
@@ -92,6 +116,7 @@ class Account {
         if(in_array(1, $this->getAccountError()))
             return false;
         else {
+            $this->getGroupInformation($this->getAccountID());
             return true;
         }
     }
@@ -199,5 +224,23 @@ class Account {
     public function __destruct() {
 
     }
+
+    /**
+     * @param array $group
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+
 
 }

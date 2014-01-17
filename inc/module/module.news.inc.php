@@ -9,7 +9,7 @@
 if(isset($_GET['action'])) {
     if($_GET['action'] == 'writeNews') {
         $smarty->assign('currentContentHead', 'German Kings News schreiben');
-        $smarty->assign('content', 'administration/news_create.tpl');
+        $smarty->assign('content', 'adm/news_create.tpl');
     }
 } else {
     $smarty->assign('currentContentHead', 'German Kings News');
