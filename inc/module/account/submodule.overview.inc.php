@@ -4,4 +4,6 @@
  * User: 'Barracuda'
  * Date: 14.01.14
  * Time: 11:41
- */ 
+ */
+
+$smarty->assign('content', 'account/overview.tpl');

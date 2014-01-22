@@ -9,9 +9,7 @@
 /** Load mainframe template */
 $smarty->display('mainframe.tpl');
 
-var_dump($_COOKIE);
-var_dump($_SESSION);
+print 'POST:';
 var_dump($_POST);
-var_dump($registration);
-print '---';
-var_dump(unserialize($_SESSION['account']['group']));
+print 'API:';
+var_dump($apiKey);

@@ -13,12 +13,6 @@ ini_set('display_errors', 1);
 /** Start session */
 session_start();
 
-/** If a cookie is found, create the account session */
-if(isset($_COOKIE['gerki'])) {
-    $_SESSION['account']['accountID'] = $_COOKIE['gerki']['accountID'];
-    $_SESSION['account']['loginName'] = $_COOKIE['gerki']['loginName'];
-}
-
 /** Include Smarty lib */
 require_once 'smarty/Smarty.class.php';
 
@@ -53,6 +47,19 @@ spl_autoload_register('autoload_classes');
 \eCMS\database\db::setPwd('');
 \eCMS\database\db::setDbname('ecms');
 
+/** Create account object */
+$account = new \eCMS\Account\Account();
+
+/** If a cookie is found, create the account session */
+if(isset($_COOKIE['gerki']) && !isset($_SESSION['account'])) {
+    if($account->loginUserByCookie() == true) {
+        $_SESSION['account']['accountID'] = $_COOKIE['gerki']['accountID'];
+        $_SESSION['account']['loginName'] = $_COOKIE['gerki']['loginName'];
+        $_SESSION['account']['group'] = $_COOKIE['gerki']['group'];
+        $_SESSION['account']['checksum'] = serialize(\eCMS\Misc\miscellaneous::hasher(unserialize($_SESSION['account']['accountID']) . unserialize($_SESSION['account']['loginName'])));
+    }
+}
+
 /** Load defined modules */
 if(isset($_GET['module'])) {
     $modulePath = 'inc/module/';
@@ -73,6 +80,37 @@ if(isset($_GET['submodule'])) {
     }
     else
         require $submodulePath . $submoduleName;
+}
+
+/** Check SESSION and COOKIE for manipulation */
+if(isset($_SESSION['account']) || isset($_COOKIE['gerki'])) {
+    if(isset($_SESSION['account'])) {
+        if(unserialize($_SESSION['account']['checksum']) != \eCMS\Misc\miscellaneous::hasher(unserialize($_SESSION['account']['accountID']) . unserialize($_SESSION['account']['loginName']), unserialize($_SESSION['account']['checksum']))) {
+            $_SESSION = array();
+            unset($_SESSION['account']);
+            session_destroy();
+            setcookie('gerki[accountID]', '', time()-1);
+            setcookie('gerki[loginName]', '', time()-1);
+            setcookie('gerki[group]', '', time()-1);
+            setcookie('gerki[checksum]', '', time()-1);
+            $_COOKIE['gerki'] = '';
+            unset($_COOKIE['gerki']);
+        }
+    }
+
+    if(isset($_COOKIE['gerki'])) {
+        if(unserialize($_COOKIE['gerki']['checksum']) != \eCMS\Misc\miscellaneous::hasher(unserialize($_COOKIE['gerki']['accountID']) . unserialize($_COOKIE['gerki']['loginName']), unserialize($_COOKIE['gerki']['checksum']))) {
+            $_SESSION = array();
+            unset($_SESSION['account']);
+            session_destroy();
+            setcookie('gerki[accountID]', '', time()-1);
+            setcookie('gerki[loginName]', '', time()-1);
+            setcookie('gerki[group]', '', time()-1);
+            setcookie('gerki[checksum]', '', time()-1);
+            $_COOKIE['gerki'] = '';
+            unset($_COOKIE['gerki']);
+        }
+    }
 }
 
 $country = array('Abchasien',

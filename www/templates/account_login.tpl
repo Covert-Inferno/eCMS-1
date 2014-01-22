@@ -19,6 +19,11 @@
             </label>
             <br />
             <br />
+            <label>
+                <input type="checkbox" name="stayLoggedIn" value="1" style="width: 10px; height: 10px;" /> Ich will eingeloggt bleiben
+            </label>
+            <br />
+            <br />
             <input type="submit" class="pushButton" value="Login" name="submit" />&nbsp;&nbsp;<input type="button" class="pushButton" value="Passwort vergessen?" name="lostPassword" />
         </form>
         <br />

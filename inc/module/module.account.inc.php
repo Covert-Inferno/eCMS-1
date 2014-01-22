@@ -6,7 +6,6 @@
  * Time: 22:02
  */
 
-$account = new \eCMS\Account\Account();
 $smarty->assign('content', 'account_overview.tpl');
 
 if(isset($_GET['action']) && $_GET['action'] == 'login') {
@@ -16,13 +15,20 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
         if($account->loginUser($_POST) == false)
             $smarty->assign('content', 'account_login.tpl');
         else {
+            #die(var_dump($_POST));
             $_SESSION['account']['accountID'] = serialize($account->getAccountID());
             $_SESSION['account']['loginName'] = serialize($account->getLoginName());
             $_SESSION['account']['group'] = serialize($account->getGroup());
-            setcookie('gerki[accountID]', serialize($account->getAccountID()), time()+60*60*24*30);
-            setcookie('gerki[loginName]', serialize($account->getLoginName()), time()+60*60*24*30);
-            setcookie('gerki[group]', serialize($account->getGroup()), time()+60*60*24*30);
-            header("Location: ?module=account&submodule=overview");
+            $_SESSION['account']['checksum'] = serialize(\eCMS\Misc\miscellaneous::hasher(unserialize($_SESSION['account']['accountID']) . unserialize($_SESSION['account']['loginName'])));
+            if(isset($_POST['stayLoggedIn'])) {
+                setcookie('gerki[accountID]', serialize($account->getAccountID()), time()+60*60*24*30);
+                setcookie('gerki[loginName]', serialize($account->getLoginName()), time()+60*60*24*30);
+                setcookie('gerki[group]', serialize($account->getGroup()), time()+60*60*24*30);
+                $checksum = \eCMS\Misc\miscellaneous::hasher(unserialize($_SESSION['account']['accountID']) . unserialize($_SESSION['account']['loginName']));
+                setcookie('gerki[checksum]', serialize($checksum), time()+60*60*24*30);
+                \eCMS\Account\Account::saveChecksum($checksum, $account->getAccountID(), $account->getLoginName());
+            }
+            header("Location: ?module=news");
         }
         $_POST = '';
     }
@@ -36,7 +42,14 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout') {
     setcookie('gerki[accountID]', '', time()-1);
     setcookie('gerki[loginName]', '', time()-1);
     setcookie('gerki[group]', '', time()-1);
+    setcookie('gerki[checksum]', '', time()-1);
     $_COOKIE['gerki'] = '';
     unset($_COOKIE['gerki']);
     $smarty->assign('content', 'welcome.tpl');
+}
+
+if(isset($_GET['action']) && $_GET['action'] == 'edit') {
+    if(isset($_SESSION['account']) || isset($_COOKIE['gerki'])) {
+
+    }
 }

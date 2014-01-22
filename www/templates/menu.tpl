@@ -21,7 +21,7 @@
                             </li>
 {else}
                             <li>
-                                <a href="" target="_self">Account</a>
+                                <a href="?module=account&submodule=overview" target="_self">Account</a>
                             </li>{/if}
 {if !isset($smarty.session['account'])}
                             <li>

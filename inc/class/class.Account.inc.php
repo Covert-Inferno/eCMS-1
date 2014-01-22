@@ -86,6 +86,35 @@ class Account {
         }
     }
 
+    private function validateCookieHash($hash) {
+        if(empty($hash))
+            return false;
+        else {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'SELECT
+                  tblUserAccount_accId,
+                  tblUserAccount_loginName,
+                  tblUserAccount_email
+                FROM
+                  tblUserAccount
+                WHERE
+                  tblUserAccount_cookieHash = :chash'
+            );
+            $stmt->bind_param('chash', $hash);
+            $stmt->execute();
+            $cookieLogin = $stmt->fetch_assoc();
+            if ($cookieLogin == false)
+                return false;
+            else {
+                $this->setAccountID($cookieLogin['tblUserAccount_accId']);
+                $this->setLoginName($cookieLogin['tblUserAccount_loginName']);
+                $this->setEmail($cookieLogin['tblUserAccount_email']);
+            }
+            return true;
+        }
+    }
+
     private function getGroupInformation($accountId) {
         if(!empty($accountId)) {
             $db = db::getInstance();
@@ -119,6 +148,37 @@ class Account {
             $this->getGroupInformation($this->getAccountID());
             return true;
         }
+    }
+
+    public function loginUserByCookie() {
+        if(isset($_COOKIE['gerki']) && !empty($_COOKIE['gerki'])) {
+            if($this->validateCookieHash(unserialize($_COOKIE['gerki']['checksum'])) == true) {
+                self::getGroupInformation(self::getAccountID());
+                return true;
+            } else
+                return false;
+        } else
+            return false;
+    }
+
+    public function saveChecksum($hash, $accountID, $loginName) {
+        if(!empty($hash) && !empty($accountID) && !empty($loginName)) {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'UPDATE
+                    tblUserAccount
+                SET
+                    tblUserAccount_cookieHash = :chash
+                WHERE
+                    tblUserAccount_accId = :accountId
+                AND
+                    lower(tblUserAccount_loginName) = lower(:lname)'
+            );
+            $stmt->bind_param('chash', $hash);
+            $stmt->bind_param('accountId', $accountID);
+            $stmt->bind_param('lname', $loginName);
+            $stmt->execute();
+            }
     }
 
     /**
