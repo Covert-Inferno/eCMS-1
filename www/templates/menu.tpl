@@ -39,15 +39,15 @@
                                 <li style="padding-right: 80px;"><b><a href="?module=news" target="_self">NEWS</a></b><br /><span style="font-size: 10px; color: #bbb">Archiv</span>
                                     <ul>
                                         <li><a href="?module=news&submodule=archive" target="_self">Archiv</a></li>
-                                        <li><a href="?module=news&action=writeNews" target="_self">News schreiben</a></li>
+                                        {if isset($smarty.session.account.group) && ({multi_in_array value="3f5b905c5887aa8e451e60a2c8aaa739" array=unserialize($smarty.session.account.group)} || {multi_in_array value="ac230284f9f5da1bb3cc6e71d5100769" array=unserialize($smarty.session.account.group)})}<li><a href="?module=news&action=writeNews" target="_self">News schreiben</a></li>{/if}
                                     </ul>
                                 </li>
                                 <li><b><a href="#" target="_self">CORPORATION</a></b><br /><span style="font-size: 10px; color: #bbb">Beschreibung und Infos</span>
                                     <ul>
                                         <li><a href="?module=page&page=description" target="_self">Beschreibung</a></li>
                                         <li><a href="?module=page&page=information" target="_self">Informationen</a></li>
-                                        {if isset($smarty.session.account.group) && {multi_in_array value="f3fadf2de9b52b699718ede3d0f49a37" array=unserialize($smarty.session.account.group)}}<li><a href="?module=members" target="_self">Mitglieder</a></li>{/if}
-                                        {if isset($smarty.session.account.group) && {multi_in_array value="f3fadf2de9b52b699718ede3d0f49a37" array=unserialize($smarty.session.account.group)}}<li><a href="?module=assignment" target="_self">Aufgaben</a></li>{/if}
+                                        {if isset($smarty.session.account.group) && ({multi_in_array value="3f5b905c5887aa8e451e60a2c8aaa739" array=unserialize($smarty.session.account.group)} || {multi_in_array value="f3fadf2de9b52b699718ede3d0f49a37" array=unserialize($smarty.session.account.group)})}<li><a href="?module=members" target="_self">Mitglieder</a></li>{/if}
+                                        {if isset($smarty.session.account.group) && ({multi_in_array value="3f5b905c5887aa8e451e60a2c8aaa739" array=unserialize($smarty.session.account.group)} || {multi_in_array value="f3fadf2de9b52b699718ede3d0f49a37" array=unserialize($smarty.session.account.group)})}<li><a href="?module=assignment" target="_self">Aufgaben</a></li>{/if}
                                         <li><a href="?module=diplomacy" target="_self">Diplomatie</a></li>
                                         <li><a href="?module=application" target="_self">Bewerbung</a></li>
                                     </ul>

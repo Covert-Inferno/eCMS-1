@@ -66,4 +66,4 @@
             <a href="?module=application" target="_self">Bewirb dich bei uns</a> und schau einfach in unserem &ouml;ffentlichen Channel &quot;Ger-Ki&quot; vorbei. Dort kannst du auch gleich ein paar German Kings kennenlernen und etwas plaudern.
             <br />
             <br />
-            Du kannst Dich auch gern an unseren Perso-Diplo Apraxas1 wenden.
+            Du kannst Dich auch gern an unseren Personalmanager (siehe <a href="?module=page&page=information" target="_self">Informationen</a>) wenden.
