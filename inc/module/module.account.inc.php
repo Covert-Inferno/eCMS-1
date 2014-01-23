@@ -12,9 +12,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
     $smarty->assign('currentContentHead', 'German Kings Login');
     $smarty->assign('content', 'account_login.tpl');
     if(isset($_POST) && isset($_POST['submit'])) {
-        if($account->loginUser($_POST) == false)
+        if($account->loginUser($_POST) == false) {
+            $smarty->assign('accountError', $account->getAccountError());
             $smarty->assign('content', 'account_login.tpl');
-        else {
+        } else {
             #die(var_dump($_POST));
             $_SESSION['account']['accountID'] = serialize($account->getAccountID());
             $_SESSION['account']['loginName'] = serialize($account->getLoginName());

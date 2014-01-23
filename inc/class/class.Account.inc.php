@@ -23,7 +23,8 @@ class Account {
         'noLoginName' => 0,
         'loginNameUnknown' => 0,
         'noLoginPwd' => 0,
-        'loginPwdWrong' => 0
+        'loginPwdWrong' => 0,
+        'accountBanned' => 0
     );
     private $group;
 
@@ -115,6 +116,23 @@ class Account {
         }
     }
 
+    private function isAccountBanned() {
+        $db = db::getInstance();
+        $stmt = $db->prepare(
+            'SELECT
+                tblUserAccount_banned
+            FROM
+                tblUserAccount
+            WHERE
+                tblUserAccount_accId = :aid'
+        );
+        $stmt->bind_param('aid', $this->getAccountID());
+        $stmt->execute();
+        $banned = $stmt->fetch_assoc();
+        if($banned['tblUserAccount_banned'] == 1)
+            $this->setAccountError('banned');
+    }
+
     private function getGroupInformation($accountId) {
         if(!empty($accountId)) {
             $db = db::getInstance();
@@ -141,6 +159,7 @@ class Account {
     public function loginUser($loginData) {
         $this->validateLoginName($loginData['loginName']);
         $this->validatePassword($loginData['loginPwd']);
+        $this->isAccountBanned();
 
         if(in_array(1, $this->getAccountError()))
             return false;
@@ -179,6 +198,34 @@ class Account {
             $stmt->bind_param('lname', $loginName);
             $stmt->execute();
             }
+    }
+
+    public static function killSession() {
+        $_SESSION = array();
+        unset($_SESSION['account']);
+        session_destroy();
+        setcookie('gerki[accountID]', '', time()-1);
+        setcookie('gerki[loginName]', '', time()-1);
+        setcookie('gerki[group]', '', time()-1);
+        setcookie('gerki[checksum]', '', time()-1);
+        $_COOKIE['gerki'] = '';
+        unset($_COOKIE['gerki']);
+    }
+
+    public static function banAccount($accountId) {
+        if(isset($accountId)) {
+            $db = db::getInstance();
+            $stmt = $db->prepare(
+                'UPDATE
+                    tblUserAccount
+                SET
+                    tblUserAccount_banned = 1
+                WHERE
+                    tblUserAccount_accId = :aid'
+            );
+            $stmt->bind_param('aid', $accountId);
+            $stmt->execute();
+        }
     }
 
     /**

@@ -6,6 +6,7 @@
 <div id="contentmid">
     <div id="contentframe">
         <div class="text">
+{if isset($accountError)}{if $accountError.banned == 1}<strong style="color: #ff0000;">Dein Account wurde aufgrund von Verst&ouml;&szlig;en entweder automatisch oder manuell gesperrt. Wenn Du glaubst, die Sperrung sei unverschuldet erfolgt, wende Dich bitte an einen Administrator.</strong><br /><br />{/if}{/if}
         <form action="?module=account&action=login" method="post" accept-charset="iso-8859-1" autocomplete="off">
             <span style="display: block; float: left; width: 150px;">Loginname:</span>
             <label>

@@ -22,4 +22,4 @@
 {/foreach}
             <br />
             <br />
-            <a href="" target="_self">Neuen API Key hinzuf&uuml;gen</a>
+            <a href="?module=account&submodule=apikey&action=add" target="_self">Neuen API Key hinzuf&uuml;gen</a>
