@@ -87,8 +87,11 @@ class APIKey {
             );
             $stmt->bind_param('kid', $keyID);
             $stmt->bind_param('verCode', $vCode);
-            $stmt->bind_param('csum', md5('KeyIdIs' . $keyID));
+            $checksum = md5('KeyIdIs' . $keyID);
+            $stmt->bind_param('csum', $checksum);
             $stmt->execute();
+
+            $lastId = $stmt->lastid;
 
             $stmt2 = $db->prepare(
                 'INSERT INTO
@@ -97,9 +100,32 @@ class APIKey {
                     tblAPIAccount_id = :kid,
                     tblAPIAccount_accountId = :aid'
             );
-            $stmt2->bind_param('kid', $stmt->lastid);
+            $stmt2->bind_param('kid', $lastId);
             $stmt2->bind_param('aid', unserialize($_SESSION['account']['accountID']));
             $stmt2->execute();
+
+            if(!empty($stmt->error) || !empty($stmt2->error)) {
+                $delstmt = $db->prepare(
+                    'DELETE FROM
+                        tblAPIKey
+                    WHERE
+                        tblAPIKey_checksum = :csum'
+                );
+                $delstmt->bind_param('csum', $checksum);
+                $delstmt->execute();
+
+                $delstmt2 = $db->prepare(
+                    'DELETE FROM
+                        tblAPIAccount
+                    WHERE
+                        tblAPIAccount_id = :kid'
+                );
+                $delstmt2->bind_param('kid', $lastId);
+                $delstmt2->execute();
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 

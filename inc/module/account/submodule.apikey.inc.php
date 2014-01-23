@@ -13,11 +13,17 @@ if(isset($_GET['action'])) {
             $checkAPIKey = $eveapi->fetchData('/account/APIKeyInfo.xml.aspx');
             if($checkAPIKey->error['code'] != NULL) {
                 $smarty->assign('error', $checkAPIKey->error['code']);
+                $smarty->assign('content', 'account/apikey_add.tpl');
             } else {
-                \eCMS\Account\APIKey::addAPIKey($_POST['keyId'], $_POST['vCode']);
+                if(\eCMS\Account\APIKey::addAPIKey($_POST['keyId'], $_POST['vCode']) == true) {
+                    $smarty->assign('content', 'account/apikey_add_success.tpl');
+                } else {
+                    $smarty->assign('content', 'account/apikey_add_failure.tpl');
+                }
             }
+        } else {
+            $smarty->assign('content', 'account/apikey_add.tpl');
         }
-        $smarty->assign('content', 'account/apikey_add.tpl');
     } else if($_GET['action'] == 'del') {
         /** Löschen eines bestimmten APIKeys */
     } else if($_GET['action'] == 'edit') {

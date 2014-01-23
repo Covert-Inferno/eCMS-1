@@ -6,6 +6,9 @@
 <div id="contentmid">
     <div id="contentframe">
         <div class="text">
+            <a href="?module=account&submodule=apikey" target="_self">&laquo; Zur&uuml;ck zur API Key-Verwaltung</a>
+            <br />
+            <br />
 {if !isset($notAllowed) || $notAllowed != 1}
 {if empty($apiKey)}<strong style="color: #ff0000;">Fehler! Keinen g&uuml;ltigen API Key gefunden!</strong><br /><br />{/if}
             <form action="" method="post" accept-charset="iso-8859-1">
@@ -32,7 +35,7 @@
             </form>
 {else}
 {if isset($banned) || $banned == 1}
-            Du hast jetzt - ungeachtet der vorherigen Warnung - mehrfach versucht einen fremden API Key zu manipulieren. Dein Account wurde nun gesperrt. Wenn Du denkst, dass es sich um einen Fehler handelt, wende Dich bitte an einen Administrator.
+            Du hast - ungeachtet der vorherigen Warnung - mehrfach versucht einen fremden API Key zu manipulieren. Dein Account wurde nun gesperrt. Wenn Du denkst, dass es sich um einen Fehler handelt, wende Dich bitte an einen Administrator.
 {else}
             Netter Versuch. Aber dieser API Key geh&ouml;rt Dir nicht. Der Versuch auf einen fremden API Key zuzugreifen, stellt einen Versto&szlig; dar und wird aufgezeichnet. Weitere Versuche fremde API Keys zu manipulieren, f&uuml;hren zur Account-Sperrung.
 {/if}{/if}
