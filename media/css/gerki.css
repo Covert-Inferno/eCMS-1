@@ -424,3 +424,20 @@ div .newsTitle {
     font-weight: normal;
     font-size: 10px;
 }
+
+div .account_point {
+    position: relative;
+    width: 165px;
+    text-align: center;
+    float: left;
+}
+
+div .account_point a {
+    text-decoration: none;
+}
+
+div .last_comment {
+    position: relative;
+    float: left;
+    width: 330px;
+}
