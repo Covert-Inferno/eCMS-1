@@ -14,7 +14,7 @@
             <br />
 {if isset($error)}
     {if $error == 203 || $error == 204 || $error == 205 || $error == 210 || $error == 212}<strong style="color: #ff0000;">Die Authentifizierung ist fehlgeschlagen. Bitte &uuml;berpr&uuml;fe Key ID und Verification Code.</strong><br /><br />{/if}
-    {if $error == 222}<strong style="color: #ff0000;">Dieser API Key ist nicht mehr g&uuml;ltig. Bitte erneuere ihn oder f&uuml;ge einen anderen, g&uuml;ltigen API Key hinzu.</strong></strong><br /><br />{/if}
+    {if $error == 222}<strong style="color: #ff0000;">Dieser API Key ist nicht mehr g&uuml;ltig. Bitte erneuere ihn oder f&uuml;ge einen anderen, g&uuml;ltigen API Key hinzu.</strong><br /><br />{/if}
 {/if}
             <form action="?module=account&submodule=apikey&action=add" method="post" accept-charset="iso-8859-1">
                 <label>

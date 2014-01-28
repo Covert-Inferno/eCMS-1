@@ -15,7 +15,7 @@
                 <u>API Keys verwalten</u></a>
             </div>
             <div class="account_point">
-                <a href="?module=account&submodule=character" target="_self"><img src="./media/img/account_icons/charaktere.png" border="0" width="102" height="56" alt="" />
+                <a href="?module=character" target="_self"><img src="./media/img/account_icons/charaktere.png" border="0" width="102" height="56" alt="" />
                 <br />
                 <u>Charaktere verwalten</u></a>
             </div>
@@ -25,7 +25,7 @@
                 <u>Nachrichten (0)</u></a>
             </div>
             <div class="account_point">
-                <a href="?module=message" target="_self"><img src="./media/img/account_icons/bills.png" border="0" width="102" height="56" alt="" />
+                <a href="?module=bills" target="_self"><img src="./media/img/account_icons/bills.png" border="0" width="102" height="56" alt="" />
                 <br />
                 <u>Rechnungen (0)</u></a>
             </div>
